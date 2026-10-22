@@ -6,6 +6,10 @@ Wie Stickyurl: **kein Backend, keine Datenbank, keine Abhängigkeiten, kein Buil
 
 ## Starten und veröffentlichen
 
+Live: https://fischerscode.github.io/picktwig/
+
+GitHub Pages ist wie bei Stickyurl auf Branch `main` und Verzeichnis `/` eingestellt. Jeder Push nach `main` veröffentlicht die Website automatisch; ein eigener Build oder Workflow ist für die statischen Dateien nicht nötig.
+
 Das Repository direkt als statische Website ausliefern, beispielsweise mit GitHub Pages (Branch `main`, Verzeichnis `/`). Lokal:
 
 ```sh
