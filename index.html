@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Eine Frage. Mehrere Wege. Erstelle einen Link, der mit einer einfachen Auswahl zum passenden Ziel führt.">
+  <title>Picktwig — Deine Wahl. Dein Weg.</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header" hidden><a class="brand" href="./" aria-label="Picktwig Startseite"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M9 25V16a7 7 0 0 1 7-7h7M16 9l-4-4m4 4-4 4M23 9l-4-4m4 4-4 4M9 25l-4-4m4 4 4-4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>picktwig</a><span class="header-note">Ein Link. Deine Möglichkeiten.</span></header>
+  <noscript><p class="notice">Bitte aktiviere JavaScript, um Links zu erstellen oder eine Option auszuwählen.</p></noscript>
+  <main>
+    <section id="builder" class="builder" hidden>
+      <div class="intro"><p class="eyebrow">KLEINE FRAGE. VIELE MÖGLICHKEITEN.</p><h1>Deine Wahl.<br><span>Dein Weg.</span></h1><p class="lead">Eine Frage, mehrere Antworten und immer das passende Ziel.<br class="desktop-break"> Alles in einem einzigen Link.</p></div>
+      <p id="route-error" class="notice error" role="alert" hidden></p>
+      <div class="workspace">
+        <section class="editor panel" aria-labelledby="editor-title">
+          <div class="panel-heading"><div class="step">1</div><div><h2 id="editor-title">Gestalte deine Auswahl</h2><p>Was möchtest du fragen?</p></div></div>
+          <form id="link-form" novalidate>
+            <label for="question">Deine Frage</label>
+            <input id="question" type="text" maxlength="240" placeholder="Wofür interessierst du dich?" autocomplete="off" required>
+            <fieldset class="theme-field"><legend>Darstellung</legend><div class="theme-options">
+              <label><input type="radio" name="theme" value="auto" checked><span>Automatisch</span></label>
+              <label><input type="radio" name="theme" value="light"><span>Hell</span></label>
+              <label><input type="radio" name="theme" value="dark"><span>Dunkel</span></label>
+            </div><p>Automatisch folgt der Systemeinstellung der Besucher.</p></fieldset>
+            <div class="options-heading"><span id="options-label">Antwortmöglichkeiten</span><span id="option-count">2 Optionen</span></div>
+            <div id="option-list" aria-labelledby="options-label"></div>
+            <button class="add-button" type="button" id="add-option">＋ Option hinzufügen</button>
+            <p class="error form-error" id="form-error" role="alert" hidden></p>
+            <button class="primary create-button" type="submit">Link erstellen <span aria-hidden="true">↗</span></button>
+            <p class="editor-note">Kein Account. Kein Tracking. Keine gespeicherten Antworten.</p>
+          </form>
+        </section>
+        <aside class="preview-column" aria-label="Vorschau deiner Auswahl">
+          <div class="preview-label"><span class="live-dot"></span> LIVE-VORSCHAU</div>
+          <div class="preview panel"><h2 id="preview-question">Wofür interessierst du dich?</h2><div id="preview-options" class="choices"></div></div>
+          <p class="privacy-note"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.6"/></svg> Die Konfiguration steckt im Link.<br>Deine Daten bleiben in deinem Browser.</p>
+        </aside>
+      </div>
+      <section id="result" class="result panel" aria-labelledby="result-title" hidden><div class="result-heading"><span class="success-mark" aria-hidden="true">✓</span><div><h2 id="result-title">Ein Link. Bereit für alle.</h2><p>Teile ihn dort, wo deine Frage ankommen soll.</p></div></div><label for="result-url">Dein Auswahl-Link</label><div class="copy-row"><input id="result-url" type="text" readonly><button id="copy-link" type="button" class="primary">Kopieren</button></div><div class="result-bottom"><p id="copy-status" role="status"></p><a id="open-link" target="_blank" rel="noopener noreferrer">Auswahl öffnen ↗</a></div><p class="small muted">Wer den Link hat, kann Frage, Antworten und Ziel-URLs lesen. Der Link ist nicht verschlüsselt.</p></section>
+      <div class="how"><div><span>01</span><h3>Frage stellen</h3><p>Formuliere deine Frage und die möglichen Antworten.</p></div><div><span>02</span><h3>Ziele verbinden</h3><p>Hinterlege für jede Antwort die passende Website.</p></div><div><span>03</span><h3>Link teilen</h3><p>Deine Besucher wählen selbst, wohin es geht.</p></div></div>
+    </section>
+    <section id="picker" class="picker" hidden aria-labelledby="picker-question"><h1 id="picker-question"></h1><div id="picker-options" class="choices"></div></section>
+  </main>
+  <footer class="footer"><span>picktwig <span class="footer-tagline">· Ein kleiner Abzweig. Dein nächster Schritt.</span></span><nav aria-label="Rechtliches"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav></footer>
+</body>
+</html>
