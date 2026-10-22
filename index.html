@@ -22,6 +22,17 @@
       <div class="workspace">
         <section class="editor panel" aria-labelledby="editor-title">
           <div class="panel-heading"><div class="step">1</div><div><h2 id="editor-title">Gestalte deine Auswahl</h2><p>Was möchtest du fragen?</p></div></div>
+          <details class="import-config">
+            <summary>Bestehende Auswahl bearbeiten</summary>
+            <form id="import-form" novalidate>
+              <label for="import-value">Link oder Konfiguration</label>
+              <p id="import-hint">Vollständigen Link, Pfad mit #p=…, p=… oder nur den Konfigurationswert einfügen. Beim Laden werden die aktuellen Eingaben ersetzt.</p>
+              <input id="import-value" type="text" placeholder="https://…/#p=…" autocomplete="off" spellcheck="false" aria-describedby="import-hint">
+              <button class="primary" type="submit">Konfiguration laden</button>
+              <p id="import-error" class="error" role="alert" hidden></p>
+              <p id="import-status" role="status"></p>
+            </form>
+          </details>
           <form id="link-form" novalidate>
             <label for="question">Deine Frage</label>
             <input id="question" type="text" maxlength="240" placeholder="Wofür interessierst du dich?" autocomplete="off" required>

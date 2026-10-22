@@ -18,3 +18,11 @@
 .picker-mode .footer{border:0;justify-content:center;font-size:12px;padding:24px 0}
 .picker-mode .footer>span{display:none}
 .picker-mode .picker{animation:none}
+
+.import-config{margin:0 0 26px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.import-config summary{font-size:12px;font-weight:600;color:var(--blue);cursor:pointer;padding:5px 0}
+.import-config form{margin-top:16px}
+.import-config p{font-size:11px;line-height:1.7}
+#import-hint,#import-status{color:var(--muted)}
+.import-config button{margin-top:10px}
+#import-status:empty{display:none}

@@ -30,6 +30,10 @@ Die geteilte Auswahlseite zeigt ausschließlich die Frage, die Antwortoptionen u
 
 Die Auswahl verwendet normale Links im selben Tab. Es gibt keine permanente Weiterleitung (HTTP 301/308), keine automatische Wiederholung und keine gespeicherte Entscheidung. Da die App statisch ist, sendet sie auch keinen temporären HTTP-Status 302/307; die Navigation erfolgt im Browser.
 
+## Bestehende Auswahl bearbeiten
+
+Auf der Startseite im Editor „Bestehende Auswahl bearbeiten“ öffnen. Den vollständigen Link, einen Pfad mit `#p=…`, das Fragment `#p=…`, den Parameter `p=…` oder den reinen Konfigurationswert einfügen und „Konfiguration laden“ wählen. Frage, Antworttexte, Ziel-URLs und Darstellung werden übernommen und können geändert werden. Gültige Importe ersetzen die aktuellen Eingaben; bei ungültigen Daten bleiben diese erhalten. Anschließend einen neuen Link erstellen. Bereits geteilte Links bleiben unverändert.
+
 ## Linkformat
 
 ```text

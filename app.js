@@ -41,7 +41,7 @@
     $('result').hidden = true;
     $('form-error').hidden = true;
   }
-  function addOption(focus = false) {
+  function addOption(focus = false, option = {}) {
     if (list.children.length >= config.MAX_OPTIONS) return;
     const id = ++nextId;
     const row = document.createElement('div');
@@ -55,6 +55,8 @@
       updatePreview();
       next.querySelector('input').focus();
     });
+    row.querySelector('.option-label').value = option.label || '';
+    row.querySelector('.option-url').value = option.url || '';
     list.append(row);
     updatePreview();
     if (focus) row.querySelector('input').focus();
@@ -63,6 +65,30 @@
   $('question').addEventListener('input', updatePreview);
   document.querySelectorAll('input[name="theme"]').forEach(input => input.addEventListener('change', updatePreview));
   $('add-option').addEventListener('click', () => addOption(true));
+  $('import-form').addEventListener('submit', event => {
+    event.preventDefault();
+    $('import-error').hidden = true;
+    $('import-status').textContent = '';
+    try {
+      // Validate everything before replacing any of the current inputs.
+      const payload = config.importConfig($('import-value').value);
+      $('question').value = payload.question;
+      document.querySelectorAll('input[name="theme"]').forEach(input => { input.checked = input.value === payload.theme; });
+      list.replaceChildren();
+      for (const option of payload.options) addOption(false, option);
+      updatePreview();
+      $('copy-status').textContent = '';
+      $('import-status').textContent = 'Konfiguration geladen. Du kannst sie jetzt bearbeiten und einen neuen Link erstellen.';
+      $('question').focus();
+    } catch {
+      $('import-error').textContent = 'Die Konfiguration konnte nicht geladen werden. Bitte prüfe, ob du den vollständigen Link oder Konfigurationswert eingefügt hast. Deine Eingaben bleiben erhalten.';
+      $('import-error').hidden = false;
+    }
+  });
+  $('import-value').addEventListener('input', () => {
+    $('import-error').hidden = true;
+    $('import-status').textContent = '';
+  });
   $('link-form').addEventListener('submit', event => {
     event.preventDefault();
     $('result').hidden = true;

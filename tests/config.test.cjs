@@ -47,3 +47,18 @@ test('old links default to automatic theme; invalid themes are rejected', () => 
     assert.throws(() => decode(hash));
   }
 });
+
+test('imports full links, relative paths, fragments, parameters and encoded values', () => {
+  const expected = { ...payload, theme: 'dark' };
+  const hash = encode(expected);
+  for (const value of [hash, 'https://example.org/picktwig/' + hash, '/picktwig/' + hash, hash.slice(1), '?' + hash.slice(1), hash.slice(3), '  ' + hash + '  ']) {
+    assert.deepEqual(globalThis.PicktwigConfig.importConfig(value), expected);
+  }
+});
+test('import rejects missing, corrupt and unsafe configurations', () => {
+  for (const value of ['', '   ', 'https://example.org/', '#p=', 'p=bad!', '#wrong=value']) {
+    assert.throws(() => globalThis.PicktwigConfig.importConfig(value));
+  }
+  const unsafe = { ...payload, options: [{ label: 'Unsafe', url: 'javascript:alert(1)' }, payload.options[1]] };
+  assert.throws(() => globalThis.PicktwigConfig.importConfig('#p=' + Buffer.from(JSON.stringify(unsafe)).toString('base64url')));
+});

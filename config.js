@@ -47,5 +47,16 @@
     const binary = atob(base64 + '='.repeat((4 - base64.length % 4) % 4));
     return validate(JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(Uint8Array.from(binary, c => c.charCodeAt(0)))));
   }
-  globalThis.PicktwigConfig = Object.freeze({ encode, decode, validate, MAX_OPTIONS });
+  function importConfig(raw) {
+    const value = raw.trim();
+    if (!value) throw new Error('Bitte füge einen bestehenden Link oder die Konfiguration ein.');
+    const hashIndex = value.indexOf('#');
+    let hash;
+    if (hashIndex >= 0) hash = value.slice(hashIndex);
+    else if (value.startsWith('?p=')) hash = '#' + value.slice(1);
+    else if (value.startsWith('p=')) hash = '#' + value;
+    else hash = PREFIX + value;
+    return decode(hash);
+  }
+  globalThis.PicktwigConfig = Object.freeze({ encode, decode, validate, importConfig, MAX_OPTIONS });
 })();
