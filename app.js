@@ -65,8 +65,7 @@
   $('question').addEventListener('input', updatePreview);
   document.querySelectorAll('input[name="theme"]').forEach(input => input.addEventListener('change', updatePreview));
   $('add-option').addEventListener('click', () => addOption(true));
-  $('import-form').addEventListener('submit', event => {
-    event.preventDefault();
+  function loadImportedConfig(focusQuestion = false) {
     $('import-error').hidden = true;
     $('import-status').textContent = '';
     try {
@@ -79,15 +78,23 @@
       updatePreview();
       $('copy-status').textContent = '';
       $('import-status').textContent = 'Konfiguration geladen. Du kannst sie jetzt bearbeiten und einen neuen Link erstellen.';
-      $('question').focus();
+      if (focusQuestion) $('question').focus();
     } catch {
       $('import-error').textContent = 'Die Konfiguration konnte nicht geladen werden. Bitte prüfe, ob du den vollständigen Link oder Konfigurationswert eingefügt hast. Deine Eingaben bleiben erhalten.';
       $('import-error').hidden = false;
     }
+  }
+  $('import-form').addEventListener('submit', event => {
+    event.preventDefault();
+    loadImportedConfig(true);
   });
   $('import-value').addEventListener('input', () => {
-    $('import-error').hidden = true;
-    $('import-status').textContent = '';
+    if ($('import-value').value.trim()) {
+      loadImportedConfig();
+    } else {
+      $('import-error').hidden = true;
+      $('import-status').textContent = '';
+    }
   });
   $('link-form').addEventListener('submit', event => {
     event.preventDefault();

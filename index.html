@@ -9,8 +9,8 @@
   <title>Picktwig — Deine Wahl. Dein Weg.</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
-  <script src="config.js" defer></script>
-  <script src="app.js" defer></script>
+  <script src="config.js?v=20261022-import2" defer></script>
+  <script src="app.js?v=20261022-import2" defer></script>
 </head>
 <body>
   <header class="site-header" hidden><a class="brand" href="./" aria-label="Picktwig Startseite"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M9 25V16a7 7 0 0 1 7-7h7M16 9l-4-4m4 4-4 4M23 9l-4-4m4 4-4 4M9 25l-4-4m4 4 4-4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>picktwig</a><span class="header-note">Ein Link. Deine Möglichkeiten.</span></header>
@@ -26,7 +26,7 @@
             <summary>Bestehende Auswahl bearbeiten</summary>
             <form id="import-form" novalidate>
               <label for="import-value">Link oder Konfiguration</label>
-              <p id="import-hint">Vollständigen Link, Pfad mit #p=…, p=… oder nur den Konfigurationswert einfügen. Beim Laden werden die aktuellen Eingaben ersetzt.</p>
+              <p id="import-hint">Vollständigen Link, Pfad mit #p=…, p=… oder nur den Konfigurationswert einfügen. Die Konfiguration wird beim Einfügen automatisch geladen und ersetzt die aktuellen Eingaben.</p>
               <input id="import-value" type="text" placeholder="https://…/#p=…" autocomplete="off" spellcheck="false" aria-describedby="import-hint">
               <button class="primary" type="submit">Konfiguration laden</button>
               <p id="import-error" class="error" role="alert" hidden></p>
